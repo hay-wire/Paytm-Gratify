@@ -1,10 +1,10 @@
 {
-  "name": "paytm-gratify-module",
-  "version": "1.1.4",
+  "name": "paytmGratify",
+  "version": "2.0.1",
   "description": "Paytm Customer Gratification Module for Merchant Transaction",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG_API_CALL=yes DEBUG=paytm:* node test.js "
+    "test": "DEBUG_PAYTM_API_CALL=yes DEBUG=paytm:* node test.js "
   },
   "keywords": [
     "paytm customer gratification",
@@ -16,5 +16,8 @@
     "debug": "^2.6.7",
     "request": "^2.81.0",
     "request-debug": "^0.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
   }
 }

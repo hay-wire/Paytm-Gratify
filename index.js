@@ -8,13 +8,13 @@ const genJson = require('./dependencies/genJson');
 const request = require('request');
 const debug = require('debug')('paytmgratify:main');
 
-if(process.env.DEBUG_API_CALL === 'yes'){
+if(process.env.DEBUG_PAYTM_API_CALL === 'yes'){
     debug('debugging API calls also');
     require('request-debug')(request);
 }
 
 
-const PRODUCTION_ENDPOINT = "http://trust.paytm.in/wallet-web/salesToUserCredit";
+const PRODUCTION_ENDPOINT = "https://trust.paytm.in/wallet-web/salesToUserCredit";
 const STAGING_ENDPOINT = "https://trust-uat.paytm.in/wallet-web/salesToUserCredit";
 
 /**
