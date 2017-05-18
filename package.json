@@ -10,6 +10,10 @@
     "paytm customer gratification",
     "move funds from subwallet to customer wallet"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hay-wire/paytmgratify.git"
+  },
   "author": "Haywire <prashantdwivedi06@gmail.com>",
   "license": "ISC",
   "dependencies": {

@@ -1,17 +1,32 @@
-﻿# Paytm-Gratify
+﻿# PaytmGratify
 
-**Paytm-Gratify** is a paytm module which helps in hassle free money transfer from Merchant Sub-Wallet to customer wallet.
+**PaytmGratify** is a paytm module which helps in hassle free money transfer from Merchant Sub-Wallet to customer wallet.
 It's built on top of the long updated project [paytmGratify](https://github.com/dinesh3836/paytmGratify).
 
 Added features:
-    * Promisified the API
-    * Simplified library logic
-    * updated the API call to the most recent version
-    * wrote a test case to validate credentials quicky
+
+* Promisified the API
+* Simplified library logic
+* updated the API call to the most recent version
+* wrote a test case to validate credentials quicky
 
 ## Installation
 
-npm install hay-wire/Paytm-Gratify
+```
+npm install paytmgratify
+```
+
+Additionally, you can clone from Github:
+```
+git clone https://github.com/hay-wire/paytmgratify.git
+```
+or
+```
+git clone git@github.com:hay-wire/paytmgratify.git
+```
+
+Or check the project online on [Github](https://github.com/hay-wire/paytmgratify)
+
 
 ## Usage
 Require the library and call gratifyCustomer() with 3 argument objects, namely - transactionDetails, merchantDetails, platformDetails.
@@ -59,10 +74,10 @@ To test the application, just run the test app with your .env file containing me
 ```
 
 ##References
-[Paytm Gateway Reference](http://paywithpaytm.com/)
-[Paytm Api Documentation](http://paywithpaytm.com/developer/paytm_api_doc/)
+* [Paytm Gateway Reference](http://paywithpaytm.com/)
+* [Paytm Api Documentation](http://paywithpaytm.com/developer/paytm_api_doc/)
 
 ##Author
-[Dinesh Kumar Sharma](https://in.linkedin.com/in/dinesh-sharma-2a7312100)
-[Haywire](https://github.com/hay-wire)
+* [Haywire](https://github.com/hay-wire)
+* [Dinesh Kumar Sharma](https://in.linkedin.com/in/dinesh-sharma-2a7312100)
 
