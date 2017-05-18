@@ -1,6 +1,6 @@
 {
   "name": "paytmgratify",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Paytm Customer Gratification Module for Merchant Transaction",
   "main": "index.js",
   "scripts": {
