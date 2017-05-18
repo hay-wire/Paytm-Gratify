@@ -27,15 +27,15 @@ var checksum = {
             cb(undefined, params);
         });
     },
-    genchecksumbystring: function (jsonstring, key, cb) {
-        var data = jsonstring;
-        crypt.gen_salt(4, function (err, salt) {
-            var sha256 = crypto.createHash('sha256').update(data + '|' + salt).digest('hex');
-            var check_sum = sha256 + salt;
-            var encrypted = crypt.encrypt(check_sum, key);
-
-            cb(undefined, encrypted);
-        });
+    genchecksumbystring: function (data, key, cb) {
+        return crypt.gen_salt(4)
+            .then(function (salt) {
+                let sha256 = crypto.createHash('sha256').update(data + '|' + salt).digest('hex');
+                let check_sum = sha256 + salt;
+                let encrypted = crypt.encrypt(check_sum, key);
+                if(cb) return cb(undefined, encrypted);
+                return encrypted;
+            })
     },
     verifychecksum: function (params, key) {
 

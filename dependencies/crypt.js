@@ -20,6 +20,9 @@ var crypt = {
                 algo = '256';
                 break;
 
+            default:
+                throw new Error('INVALID_KEY_LENGTH');
+
         }
         var cipher = crypto.createCipheriv('AES-' + algo + '-CBC', key, iv);
         var encrypted = cipher.update(data, 'binary', 'base64');
@@ -53,13 +56,22 @@ var crypt = {
     },
 
     gen_salt: function (length, cb) {
-        crypto.randomBytes((length * 3.0) / 4.0, function (err, buf) {
-            var salt;
-            if (!err) {
-                salt = buf.toString("base64");
-            }
-            cb(err, salt);
-        });
+        return new Promise((resolve, reject)=>{
+            crypto.randomBytes((length * 3.0) / 4.0, function (err, buf) {
+                var salt;
+                if (!err) {
+                    salt = buf.toString("base64");
+                    if(cb){
+                        return cb(null, salt)
+                    }
+                    return resolve(salt);
+                }
+                if(cb){
+                    return cb(err, null)
+                }
+                reject(err);
+            });
+        })
     },
 
     /* one way md5 hash with salt */
@@ -73,23 +85,22 @@ var crypt = {
 
 module.exports = crypt;
 
-(function () {
+// test case
+// Is run when the module is run directly: `node crypt.js`
+if (require.main === module) {
     var i;
 
-    function logsalt(err, salt) {
+    var logsalt = function (err, salt) {
         if (!err) {
             console.log('salt is ' + salt);
         }
+    };
+
+    var enc = crypt.encrypt('One97', 'hellhellhellhell');
+    console.log('encrypted - ' + enc);
+    console.log('decrypted - ' + crypt.decrypt(enc, 'hellhellhellhell'));
+
+    for (i = 0; i < 5; i++) {
+        crypt.gen_salt(4, logsalt);
     }
-
-    if (require.main === module) {
-        var enc = crypt.encrypt('One97');
-        console.log('encrypted - ' + enc);
-        console.log('decrypted - ' + crypt.decrypt(enc));
-
-        for (i = 0; i < 5; i++) {
-            crypt.gen_salt(4, logsalt);
-        }
-    }
-
-}());
+}
