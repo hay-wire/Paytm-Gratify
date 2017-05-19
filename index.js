@@ -84,6 +84,12 @@ exports.gratifyCustomer = function(transactionDetails, merchantDetails, platform
                     })
                     .on('end', (dt) => {
                         debug('No more data in response.', statusCode, responseBody);
+                        try {
+                            responseBody = JSON.parse(responseBody);
+                        }
+                        catch(ex){
+                            debug("Response body is not JSON");
+                        }
                         resolve({statusCode: statusCode, body: responseBody});
                     })
                     .on('response', function(response) {
