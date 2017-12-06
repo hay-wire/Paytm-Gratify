@@ -2,10 +2,10 @@
  * Created by dinesh3836 on 18-06-2016.
  */
 var genReq = {
-    body: function (phone_number, amount, order_id, merchant_id, wallet_id, isnew_user, cur_type, cus_msg, plat_ip, plat_name) {
+    body: function (phone_number, amount, order_id, merchant_id, wallet_id, isnew_user, cur_type, cus_msg, plat_ip, plat_name, requestType) {
         var body = {
             "request": {
-                "requestType": 'null',
+                "requestType": requestType || 'null',
                 "merchantGuid": merchant_id,
                 "merchantOrderId": order_id,
                 "salesWalletGuid": wallet_id,

@@ -57,7 +57,7 @@ exports.gratifyCustomer = function(transactionDetails, merchantDetails, platform
     const paytmJson = genJson.body(transactionDetails.cust_phone, transactionDetails.amount,
         transactionDetails.order_id, merchantDetails.merchant_guid, merchantDetails.wallet_guid,
         transactionDetails.isnew_user, transactionDetails.currency_type, transactionDetails.message,
-        platformDetails.ip_address, platformDetails.platform_name);
+        platformDetails.ip_address, platformDetails.platform_name, transactionDetails.requestType|| null);
 
     debug('API body will be: ', paytmJson);
 
